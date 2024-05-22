@@ -1,0 +1,11 @@
+Id,Fecha,NombreEmpresa,CifEmpresa,DireccionEmpresa,NombreUsuario,ApellidosUsuario,DireccionUsuario,TipoSeguro,TipoVehiculo,FechaRegistro,FechaFinContrato,Coste,Iva
+1,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",John,Doe,"Calle Mayor, 10 Madrid",Comprehensive,Car,2023-05-01,2024-05-01,100.00,21.00
+2,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Jane,Doe,"Avenida Principal, 15 Barcelona",Third-Party,Motorcycle,2023-05-01,2024-05-01,150.00,21.00
+3,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Alice,Johnson,"Plaza Mayor, 20 Sevilla",Comprehensive,Bicycle,2023-05-01,2024-05-01,50.00,21.00
+4,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Bob,Johnson,"Calle Falsa, 123 Valencia",Third-Party,Car,2023-05-01,2024-05-01,200.00,21.00
+5,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Charlie,Smith,"Camino Real, 25 Bilbao",Comprehensive,Motorcycle,2023-05-01,2024-05-01,175.00,21.00
+6,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Diana,Smith,"Avenida de la Paz, 30 Zaragoza",Third-Party,Bicycle,2023-05-01,2024-05-01,75.00,21.00
+7,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Eve,Martinez,"Plaza de España, 35 Malaga",Comprehensive,Car,2023-05-01,2024-05-01,220.00,21.00
+8,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Frank,Martinez,"Calle del Sol, 40 Murcia",Third-Party,Motorcycle,2023-05-01,2024-05-01,180.00,21.00
+9,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Grace,Garcia,"Paseo de la Castellana, 45 Palma",Comprehensive,Bicycle,2023-05-01,2024-05-01,60.00,21.00
+10,2024-05-01,TuEmpresa,41256985632,"C/ Vergel, 5 Madrid, 28080",Hank,Garcia,"Calle de Alcalá, 50 Granada",Third-Party,Car,2023-05-01,2024-05-01,250.00,21.00

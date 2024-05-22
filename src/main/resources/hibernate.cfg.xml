@@ -18,11 +18,11 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
 
         <!-- Mapear clases de entidades -->
-        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.Provider"/>
-        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.Customer"/>
-        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.Vehicle"/>
-        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.Interface"/>
-        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.Translations"/>
+        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.ProviderDTO"/>
+        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.CustomerDTO"/>
+        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.VehicleDTO"/>
+        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.InterfaceDTO"/>
+        <mapping class="com.dam.tfg.MotoMammiApplicationASG.Models.TranslationsDTO"/>
 
     </session-factory>
 </hibernate-configuration>

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "MM_INTERFACE")
-public class Interface {
+public class InterfaceDTO {
     @Id
     @Column(name = "id")
     private int id;
@@ -51,12 +51,12 @@ public class Interface {
 
     @ManyToOne
     @JoinColumn(name = "codProv", referencedColumnName = "codprov", insertable = false, updatable = false)
-    private Provider provider;
+    private ProviderDTO provider;
 
-    public Interface() {
+    public InterfaceDTO() {
     }
 
-    public Interface(int id, String codExternal, String codProv, String contJson, Timestamp creationDate, Timestamp lastUpdate, String createdBy, String updatedBy, int codError, String errorMessage, StatusProcess statusProcess, Operation operation, Resource resource) {
+    public InterfaceDTO(int id, String codExternal, String codProv, String contJson, Timestamp creationDate, Timestamp lastUpdate, String createdBy, String updatedBy, int codError, String errorMessage, StatusProcess statusProcess, Operation operation, Resource resource) {
         this.id = id;
         this.codExternal = codExternal;
         this.codProv = codProv;
@@ -177,11 +177,11 @@ public class Interface {
         this.resource = resource;
     }
 
-    public Provider getProvider() {
+    public ProviderDTO getProvider() {
         return provider;
     }
 
-    public void setProvider(Provider provider) {
+    public void setProvider(ProviderDTO provider) {
         this.provider = provider;
     }
 

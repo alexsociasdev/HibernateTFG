@@ -3,10 +3,11 @@ package com.dam.tfg.MotoMammiApplicationASG.Models;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "MM_CUSTOMER")
-public class Customer {
+public class CustomerDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
@@ -51,10 +52,13 @@ public class Customer {
     @Column(name = "Gender", length = 50)
     private String gender;
 
-    public Customer() {
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VehicleDTO> vehicles;
+
+    public CustomerDTO() {
     }
 
-    public Customer(int id, String name, String firstName, String lastName, Date birthDate, String postalCode, String streetType, String city, int numberStreet, String phoneNumber, String dni, String licenceType, String email, String gender) {
+    public CustomerDTO(int id, String name, String firstName, String lastName, Date birthDate, String postalCode, String streetType, String city, int numberStreet, String phoneNumber, String dni, String licenceType, String email, String gender) {
         this.id = id;
         this.name = name;
         this.firstName = firstName;
@@ -184,9 +188,17 @@ public class Customer {
         this.gender = gender;
     }
 
+    public List<VehicleDTO> getVehicles() {
+        return vehicles;
+    }
+
+    public void setVehicles(List<VehicleDTO> vehicles) {
+        this.vehicles = vehicles;
+    }
+
     @Override
     public String toString() {
-        return "Customer{" +
+        return "CustomerDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", firstName='" + firstName + '\'' +
@@ -201,6 +213,7 @@ public class Customer {
                 ", licenceType='" + licenceType + '\'' +
                 ", email='" + email + '\'' +
                 ", gender='" + gender + '\'' +
+                ", vehicles=" + vehicles +
                 '}';
     }
 }

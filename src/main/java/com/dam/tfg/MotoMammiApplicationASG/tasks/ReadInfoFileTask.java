@@ -1,12 +1,7 @@
 package com.dam.tfg.MotoMammiApplicationASG.tasks;
 
-import com.dam.tfg.MotoMammiApplicationASG.Models.Provider;
 import com.dam.tfg.MotoMammiApplicationASG.MotoMammiApplicationAsgApplication;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.sql.*;
-import java.util.ArrayList;
 
 @Component
 public class ReadInfoFileTask {

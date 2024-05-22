@@ -1,6 +1,6 @@
 package com.dam.tfg.MotoMammiApplicationASG.tasks;
 
-import com.dam.tfg.MotoMammiApplicationASG.Models.Provider;
+import com.dam.tfg.MotoMammiApplicationASG.Models.ProviderDTO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -19,12 +19,12 @@ public class HibernateMetodos {
             throw new ExceptionInInitializerError(ex);
         }
     }
-    public static List<Provider> activeProviders() {
-        List<Provider> providers = List.of();
+    public static List<ProviderDTO> activeProviders() {
+        List<ProviderDTO> providers = List.of();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         try {
-            Query<Provider> query = session.createQuery("FROM Provider WHERE swiAct = true", Provider.class);
+            Query<ProviderDTO> query = session.createQuery("FROM Provider WHERE swiAct = true", ProviderDTO.class);
             providers = query.getResultList();
             session.getTransaction().commit();
         } catch (Exception ex) {

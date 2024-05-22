@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "MM_VEHICLE")
-public class Vehicle {
+public class VehicleDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
@@ -25,10 +25,14 @@ public class Vehicle {
     @Column(name = "model", length = 50)
     private String model;
 
-    public Vehicle() {
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private CustomerDTO customer;
+
+    public VehicleDTO() {
     }
 
-    public Vehicle(int id, String dni, String carPlate, String vehicleType, String brand, String model) {
+    public VehicleDTO(int id, String dni, String carPlate, String vehicleType, String brand, String model) {
         this.id = id;
         this.dni = dni;
         this.carPlate = carPlate;
@@ -86,6 +90,14 @@ public class Vehicle {
         this.model = model;
     }
 
+    public CustomerDTO getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomerDTO customer) {
+        this.customer = customer;
+    }
+
     @Override
     public String toString() {
         return "Vehicle{" +
@@ -95,6 +107,7 @@ public class Vehicle {
                 ", vehicleType='" + vehicleType + '\'' +
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
+                ", customer=" + customer +
                 '}';
     }
 }

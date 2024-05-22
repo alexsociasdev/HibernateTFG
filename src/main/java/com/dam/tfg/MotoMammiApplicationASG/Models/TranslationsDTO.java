@@ -5,7 +5,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "MM_TRANSLATIONS")
-public class Translations {
+public class TranslationsDTO {
     @Id
     @Column(name = "id")
     private int id;
@@ -27,12 +27,12 @@ public class Translations {
 
     @ManyToOne
     @JoinColumn(name = "codprov", referencedColumnName = "codprov", insertable = false, updatable = false)
-    private Provider provider;
+    private ProviderDTO provider;
 
-    public Translations() {
+    public TranslationsDTO() {
     }
 
-    public Translations(int id, String codProv, String internalCode, String externalCode, Date dateIni, Date dateEnd) {
+    public TranslationsDTO(int id, String codProv, String internalCode, String externalCode, Date dateIni, Date dateEnd) {
         this.id = id;
         this.codProv = codProv;
         this.internalCode = internalCode;
@@ -90,11 +90,11 @@ public class Translations {
         this.dateEnd = dateEnd;
     }
 
-    public Provider getProvider() {
+    public ProviderDTO getProvider() {
         return provider;
     }
 
-    public void setProvider(Provider provider) {
+    public void setProvider(ProviderDTO provider) {
         this.provider = provider;
     }
 

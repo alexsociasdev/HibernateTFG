@@ -7,7 +7,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "MM_PROVIDERS")
-public class Provider {
+public class ProviderDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,10 +28,10 @@ public class Provider {
     @Column(name = "SwiAct")
     private boolean swiAct;
 
-    public Provider() {
+    public ProviderDTO() {
     }
 
-    public Provider(int id, String codprov, String name, Date dateIni, Date dateEnd, boolean swiAct) {
+    public ProviderDTO(int id, String codprov, String name, Date dateIni, Date dateEnd, boolean swiAct) {
         this.id = id;
         this.codprov = codprov;
         this.name = name;

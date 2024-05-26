@@ -11,7 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +22,7 @@ import java.util.Scanner;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableTransactionManagement
 public class MotoMammiApplicationAsgApplication {
 
 	public static void main(String[] args) {
@@ -81,6 +85,17 @@ public class MotoMammiApplicationAsgApplication {
 		}
 	}
 
+
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+		http
+				.csrf(csrf -> csrf.disable())
+				.authorizeHttpRequests(authorizeRequests ->
+						authorizeRequests
+								.anyRequest().permitAll()
+				);
+		return http.build();
+	}
 	private static void crearCliente(Scanner scanner, CustomerService customerService) {
 		System.out.println("Ingrese los datos del cliente:");
 		System.out.print("Nombre: ");

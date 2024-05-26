@@ -10,4 +10,5 @@ public interface VehicleService {
     VehicleDTO getVehicleByCarPlate(String carPlate);
     VehicleDTO updateVehicle(int id, VehicleDTO vehicleDTO);
     void deleteVehicle(int id);
+    VehicleDTO createVehicle(VehicleDTO vehicleDTO);
 }

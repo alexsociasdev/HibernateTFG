@@ -1,8 +1,14 @@
 package com.dam.tfg.MotoMammiApplicationASG.Controllers;
 
+import com.dam.tfg.MotoMammiApplicationASG.Models.AccidentPartDTO;
+import com.dam.tfg.MotoMammiApplicationASG.Models.CustomerDTO;
+import com.dam.tfg.MotoMammiApplicationASG.Models.InvoiceDTO;
+import com.dam.tfg.MotoMammiApplicationASG.Models.VehicleDTO;
 import com.dam.tfg.MotoMammiApplicationASG.tasks.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/appInsurance/v1")
@@ -27,7 +33,7 @@ public class FileController {
                 customerFileTask.loadCustomerFile();
                 break;
             case "vehicles":
-                vehicleFileTask.loadVehicleFile();
+                vehicleFileTask.readVehiclesFile(codprov, date);
                 break;
             case "invoices":
                 invoiceFileTask.generateMonthlyInvoiceFile();
@@ -36,9 +42,9 @@ public class FileController {
                 accidentPartFileTask.loadAccidentPartsFromFile();
                 break;
             default:
-                return "Resource not found.";
+                return "error en el método";
         }
-        return "File processed successfully.";
+        return "Archivo procesado";
     }
 
     @PostMapping("/processInfoFileASG/{resource}/{codprov}/{date}")
@@ -57,9 +63,26 @@ public class FileController {
                 processAccidentPartFile(codprov, date);
                 break;
             default:
-                return "Resource not found.";
+                return "error en el método";
         }
-        return "Processing completed for resource: " + resource;
+        return "Archivo procesado";
+    }
+
+    @GetMapping("/printVehiclesFile/{codprov}/{date}")
+    public List<VehicleDTO> printVehiclesFile(@PathVariable String codprov, @PathVariable String date) {
+        return vehicleFileTask.getVehiclesFromFile(codprov, date);
+    }
+    @GetMapping("/printAccidentPartFile/{codprov}/{date}")
+    public List<AccidentPartDTO> printAccidentPartFile(@PathVariable String codprov, @PathVariable String date) {
+        return accidentPartFileTask.getAccidentPartsFromFile(codprov, date);
+    }
+    @GetMapping("/printCustomersFile/{codprov}/{date}")
+    public List<CustomerDTO> printCustomersFile(@PathVariable String codprov, @PathVariable String date) {
+        return customerFileTask.getCustomersFromFile(codprov, date);
+    }
+    @GetMapping("/printInvoiceFile/{codprov}/{date}")
+    public List<InvoiceDTO> printInvoiceFile(@PathVariable String codprov, @PathVariable String date) {
+        return invoiceFileTask.getInvoicesForMonth(codprov, date);
     }
 
     private void processCustomerFile(String codprov, String date) {
@@ -67,7 +90,7 @@ public class FileController {
     }
 
     private void processVehicleFile(String codprov, String date) {
-        vehicleFileTask.loadVehicleFile();
+        vehicleFileTask.readVehiclesFile(codprov, date);
     }
 
     private void processInvoiceFile(String codprov, String date) {

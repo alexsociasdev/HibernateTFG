@@ -15,7 +15,7 @@ public class HibernateMetodos {
         try {
             sessionFactory = new Configuration().configure().buildSessionFactory();
         } catch (Throwable ex) {
-            System.err.println("Initial SessionFactory creation failed: " + ex);
+            System.err.println("Creación fallida: " + ex);
             throw new ExceptionInInitializerError(ex);
         }
     }

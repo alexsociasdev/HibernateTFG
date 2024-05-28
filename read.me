@@ -1,0 +1,52 @@
+Per arrencar el projecte:./mvnw spring-boot:run
+
+Mitjançant fiddler o altres: (exemple amb customer, es el mateix funcionament amb Invoice, Vehicles o AccidentPart)
+-Creació d'usuari:
+POST: http://localhost:8081/customers
+Content-Type: application/json
+{
+  "customer": {
+    "name": "John",
+    "firstName": "Doe",
+    "lastName": "Smith",
+    "birthDate": "1980-05-15",
+    "postalCode": "12345",
+    "streetType": "Calle",
+    "city": "Madrid",
+    "numberStreet": 42,
+    "phoneNumber": "123456789",
+    "dni": "12345678A",
+    "licenceType": "B",
+    "email": "john.doe@example.com",
+    "gender": "Male"
+  },
+  "vehicles": [
+    {
+      "dni": "12345678A",
+      "carPlate": "1234ABC",
+      "vehicleType": "Car",
+      "brand": "Toyota",
+      "model": "Corolla"
+    },
+    {
+      "dni": "12345678A",
+      "carPlate": "5678DEF",
+      "vehicleType": "Motorcycle",
+      "brand": "Yamaha",
+      "model": "MT-07"
+    }
+  ]
+}
+-recerca d'usuari:
+-per dni: GET http://localhost:8081/customers/dni/12345678A
+
+
+File Controller: (exemple amb Vehicle, es el mateix funcionament amb Invoice, Customer o AccidentPart)
+
+Afegir Vehicles per fitxer:
+
+http://localhost:8081/appInsurance/v1/readInfoFileASG/vehicles/01/20240528
+
+lletgir per pantalla les dades del fitcher:
+
+http://localhost:8081/appInsurance/v1/printVehiclesFile/01/20240528

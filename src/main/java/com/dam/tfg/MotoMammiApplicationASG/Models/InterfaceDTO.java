@@ -205,7 +205,6 @@ public class InterfaceDTO {
                 '}';
     }
 
-    // Enumeraciones para los campos ENUM
     public enum StatusProcess {
         N, E, P
     }

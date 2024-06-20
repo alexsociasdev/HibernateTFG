@@ -11,7 +11,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +21,11 @@ public class InvoiceFileTask {
     @Autowired
     private InvoiceService invoiceService;
 
-    //@Value("${invoices.file.path}")
-    private String invoicesFilePath = "C:\\Users\\Alex\\Desktop\\MotoMammiApplicationASG\\src\\main\\resources\\MM_invoices_{codprov}_{date}.dat";
+    @Value("${invoices.file.path}")
+    private String invoicesFilePath;
 
-    //@Value("${default.codprov}")
-    private String defaultCodprov = "01";
+    @Value("${default.codprov}")
+    private String defaultCodprov;
 
     @Scheduled(cron = "${cron.expression.invoices}")
     public void generateMonthlyInvoiceFile() {
@@ -42,8 +41,8 @@ public class InvoiceFileTask {
 
             List<InvoiceDTO> invoices = invoiceService.getAllInvoices();
             for (InvoiceDTO invoice : invoices) {
-                writer.append((char) invoice.getId()).append(",");
-                writer.append((CharSequence) invoice.getFecha()).append(",");
+                writer.append(String.valueOf(invoice.getId())).append(",");
+                writer.append(invoice.getFecha().toString()).append(",");
                 writer.append(invoice.getNombreEmpresa()).append(",");
                 writer.append(invoice.getCifEmpresa()).append(",");
                 writer.append(invoice.getDireccionEmpresa()).append(",");
@@ -52,8 +51,8 @@ public class InvoiceFileTask {
                 writer.append(invoice.getDireccionUsuario()).append(",");
                 writer.append(invoice.getTipoSeguro()).append(",");
                 writer.append(invoice.getTipoVehiculo()).append(",");
-                writer.append((CharSequence) invoice.getFechaRegistro()).append(",");
-                writer.append((CharSequence) invoice.getFechaFinContrato()).append(",");
+                writer.append(invoice.getFechaRegistro().toString()).append(",");
+                writer.append(invoice.getFechaFinContrato().toString()).append(",");
                 writer.append(String.valueOf(invoice.getCoste())).append(",");
                 writer.append(String.valueOf(invoice.getIva())).append("\n");
             }
@@ -74,7 +73,7 @@ public class InvoiceFileTask {
                 String[] fields = line.split(",");
                 InvoiceDTO invoice = new InvoiceDTO();
                 invoice.setId(Integer.parseInt(fields[0]));
-                invoice.setFecha(Date.valueOf(fields[1]));
+                invoice.setFecha(java.sql.Date.valueOf(fields[1]));
                 invoice.setNombreEmpresa(fields[2]);
                 invoice.setCifEmpresa(fields[3]);
                 invoice.setDireccionEmpresa(fields[4]);
@@ -83,8 +82,8 @@ public class InvoiceFileTask {
                 invoice.setDireccionUsuario(fields[7]);
                 invoice.setTipoSeguro(fields[8]);
                 invoice.setTipoVehiculo(fields[9]);
-                invoice.setFechaRegistro(Date.valueOf(fields[10]));
-                invoice.setFechaFinContrato(Date.valueOf(fields[11]));
+                invoice.setFechaRegistro(java.sql.Date.valueOf(fields[10]));
+                invoice.setFechaFinContrato(java.sql.Date.valueOf(fields[11]));
                 invoice.setCoste(Double.parseDouble(fields[12]));
                 invoice.setIva(Double.parseDouble(fields[13]));
 

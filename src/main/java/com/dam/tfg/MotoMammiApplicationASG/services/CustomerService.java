@@ -2,6 +2,7 @@ package com.dam.tfg.MotoMammiApplicationASG.services;
 
 import com.dam.tfg.MotoMammiApplicationASG.Models.CustomerDTO;
 import com.dam.tfg.MotoMammiApplicationASG.Models.VehicleDTO;
+
 import java.util.List;
 
 public interface CustomerService {
@@ -12,4 +13,8 @@ public interface CustomerService {
     CustomerDTO updateCustomer(int id, CustomerDTO customerDTO);
     void deleteCustomer(int id);
     boolean customerExistsByDni(String dni);
+
+    boolean customerExistsByDni2(String dni);
+
+    void transferCustomersToFinalTable();
 }
